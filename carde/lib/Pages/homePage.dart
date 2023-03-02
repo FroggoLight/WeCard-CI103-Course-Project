@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,13 +56,33 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+          ),
+
+          SizedBox(height: 25),
 
           // Card Stack
-
-          )
-
+          Column(children: [
+            Container(
+                width: 300,
+                height: 187,
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      children: [
+                        Text("Name"),
+                        Text("Email"),
+                        Text("Number"),
+                      ],
+                    ),
+                  ],
+                ))
+          ])
           // Swipe Navigation
-
         ]),
       ),
     );
