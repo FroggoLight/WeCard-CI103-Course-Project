@@ -13,7 +13,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 44, 49, 58),
       body: SafeArea(
         child: Column(children: [
           // Top Title and Sorting Button
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
 
-                // Sort Button
+                // Search Button
                 Container(
                   padding: const EdgeInsets.all(4),
                   decoration: const BoxDecoration(
@@ -58,31 +58,53 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-          SizedBox(height: 25),
-
           // Card Stack
-          Column(children: [
-            Container(
-                width: 300,
-                height: 187,
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      children: [
-                        Text("Name"),
-                        Text("Email"),
-                        Text("Number"),
-                      ],
-                    ),
-                  ],
-                ))
-          ])
-          // Swipe Navigation
+          Expanded(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              // The Card Itself
+              Container(
+                  width: 300,
+                  height: 187,
+                  padding: EdgeInsets.all(25),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  // Stuff Within The Card
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Text Within The Card
+                      Row(children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("John Smith",
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold)),
+                            Text("email@gmail.com",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold)),
+                            Text("267-123-4567",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      ]),
+                      // Picture Within The Card
+                      Row(children: [
+                        Container(
+                            width: 100,
+                            height: 150,
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 133, 174, 217),
+                                borderRadius: BorderRadius.circular(20)))
+                      ])
+                    ],
+                  ))
+            ]),
+          )
+          // Add Button
         ]),
       ),
     );
