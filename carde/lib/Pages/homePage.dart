@@ -75,7 +75,6 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Text Within The Card
-                      Row(children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -90,16 +89,13 @@ class _HomePageState extends State<HomePage> {
                                     fontSize: 16, fontWeight: FontWeight.bold)),
                           ],
                         ),
-                      ]),
                       // Picture Within The Card
-                      Row(children: [
                         Container(
                             width: 100,
                             height: 150,
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 133, 174, 217),
+                                color: Color.fromARGB(255, 111, 136, 162),
                                 borderRadius: BorderRadius.circular(20)))
-                      ])
                     ],
                   ))
             ]),
