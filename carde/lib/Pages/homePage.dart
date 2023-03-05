@@ -103,7 +103,27 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ))
             ]),
-          )
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(60.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.add_card_rounded,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
           // Add Button
         ]),
       ),
