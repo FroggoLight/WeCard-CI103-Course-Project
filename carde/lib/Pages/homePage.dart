@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:carde/Elements/addButtonElement.dart';
+import 'package:carde/Elements/cardElement.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,63 +65,22 @@ class _HomePageState extends State<HomePage> {
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               // The Card Itself
-              Container(
-                  width: 300,
-                  height: 187,
-                  padding: EdgeInsets.all(25),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  // Stuff Within The Card
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Text Within The Card
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("John Smith",
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold)),
-                          Text("email@gmail.com",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold)),
-                          Text("267-123-4567",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                      // Picture Within The Card
-                      Container(
-                          width: 100,
-                          height: 150,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 111, 136, 162),
-                              borderRadius: BorderRadius.circular(20)))
-                    ],
-                  ))
+              Padding(
+                padding: const EdgeInsets.all(25),
+                child: Expanded(
+                  child: AspectRatio(
+                    aspectRatio: 1.59,
+                    child: Container(
+                        child: PageView(
+                            scrollDirection: Axis.vertical,
+                            children: [TheCard(), TheCard(), TheCard(), TheCard(), TheCard()])),
+                  ),
+                ),
+              )
             ]),
           ),
           // Add Button
-          Padding(
-            padding: const EdgeInsets.all(60.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.add_card_rounded,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          AddButton(),
         ]),
       ),
     );
