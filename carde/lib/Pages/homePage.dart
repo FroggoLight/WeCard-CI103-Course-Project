@@ -12,6 +12,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  PageController _cardController = PageController(initialPage: 0);
+  int _activeCard = 0;
+  List<Widget> _cards = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,16 +74,32 @@ class _HomePageState extends State<HomePage> {
                   child: AspectRatio(
                     aspectRatio: 1.59,
                     child: Container(
-                        child: PageView(
-                            scrollDirection: Axis.vertical,
-                            children: [TheCard(), TheCard(), TheCard(), TheCard(), TheCard()])),
+                        child: PageView.builder(
+                      controller: _cardController,
+                      onPageChanged: (int card) {
+                        setState(() {
+                          _activeCard = card;
+                        },);
+                      },
+                      scrollDirection: Axis.vertical,
+                      itemCount: _cards.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return _cards[index % _cards.length];
+                      },
+                    )),
                   ),
                 ),
               )
             ]),
           ),
           // Add Button
-          AddButton(),
+          GestureDetector(
+              onTap: () {
+                setState(() {
+                  _cards.add(TheCard());
+                });
+              },
+              child: AddButton()),
         ]),
       ),
     );
