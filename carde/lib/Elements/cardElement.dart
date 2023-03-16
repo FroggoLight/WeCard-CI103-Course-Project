@@ -22,7 +22,7 @@ class TheCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("John Smith",
+                  Text("Your Name",
                       style:
                           TextStyle(fontSize: 29, fontWeight: FontWeight.bold)),
                   Text("email@gmail.com",
