@@ -1,0 +1,20 @@
+git branch: See current branch
+git switch: Switch to branch
+git pull: Pull from main branch on gitLab (Only works on main branch)
+git pull origin main: Pulls from local main branch to personal branch (Use on your own branch)
+git push: Pushes changes to main branch on gitLab (Only do this on your own branch)
+
+The sequence of work goes as follows:
+    git switch main - to go to the local main branch
+    git pull - from master main to local main branch
+    git switch [your personal working branch here] - to go to the personal local branch
+    git pull origin main - pulls from local main branch to your own working branch
+
+    *** code and do changes here in this step***
+
+    after finishing all of the changes, use source control tab and post the commit there
+    git push - pushes the changes from your working branch
+
+NOTE:
+
+not the most detailed especially at the end and may change as we continue down. 
