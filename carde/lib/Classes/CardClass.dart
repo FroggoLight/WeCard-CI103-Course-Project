@@ -4,23 +4,41 @@ class Card {
   String name;
   String number;
   String email;
-  String text;
+  String description;
 
-  Card(this.name, this.number, this.email, this.text);
+  Card(this.name, this.number, this.email, this.description);
 
   editName(newName) {
     this.name = newName;
+  }
+
+  getName() {
+    return this.name;
   }
 
   editNumber(newNumber) {
     this.number = newNumber;
   }
 
+  getNumber() {
+    return this.number;
+  }
+
   editEmail(newEmail) {
     this.email = newEmail;
   }
 
-  editText(newText) {
-    this.text = newText;
+  getEmail() {
+    return this.email;
   }
+
+  editDescription(newDescription) {
+    this.description = newDescription;
+  }
+
+  getDescription() {
+    return this.description;
+  }
+
+// To Do: Add font color and style setters and getters
 }
