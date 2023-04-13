@@ -1,4 +1,4 @@
-import 'package:carde/Elements/cardElement.dart';
+import 'package:carde/Elements/PlaceHolderCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';

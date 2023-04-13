@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 
 class Card {
+  String name;
+  String number;
+  String email;
+  String text;
 
-  String? name;
-  String? number;
-  String? email;
-  String? other;
+  Card(this.name, this.number, this.email, this.text);
 
-  Card(String name, String number, String email, String other){
-    this.name = name;
-    this.number = number;
-    this.email = email;
-    this.other = other;
+  editName(newName) {
+    this.name = newName;
   }
 
-}
+  editNumber(newNumber) {
+    this.number = newNumber;
+  }
 
-  
+  editEmail(newEmail) {
+    this.email = newEmail;
+  }
+
+  editText(newText) {
+    this.text = newText;
+  }
+}
