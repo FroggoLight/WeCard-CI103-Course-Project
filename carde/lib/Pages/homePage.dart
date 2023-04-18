@@ -6,6 +6,7 @@ import 'package:carde/Pages/editPage.dart';
 import 'package:carde/Pages/scanPage.dart';
 import 'package:flutter/material.dart';
 import 'package:carde/Functions/searchBar.dart';
+import 'package:carde/Elements/BlankCard.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _cards = [];
   // Page controller for main pages
   PageController _pageController = PageController(initialPage: 1);
+  BlankCard currentCard = BlankCard(name: "", number: "", email: "", bio: "");
 
   @override
   Widget build(BuildContext context) {
