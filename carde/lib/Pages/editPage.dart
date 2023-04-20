@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:carde/Elements/BlankCard.dart';
 import 'package:carde/Elements/PlaceHolderCard.dart';
 import 'package:flutter/material.dart';
@@ -6,15 +8,11 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'dart:math' as math;
 import '../Elements/AddButton.dart';
 
-import 'dart:async';
-import 'dart:io';
-
 void main() {}
 
 class editPage extends StatefulWidget {
-  editPage({super.key});
-  //attempted to add a card object as part of
-  //the parameters for editPage, does not work
+  const editPage({super.key});
+
   @override
   State<editPage> createState() => _editPageState();
 }
@@ -25,21 +23,10 @@ class _editPageState extends State<editPage> {
   String userEmail = "";
   String userBio = "";
   var userCard;
-  // final file = File("data.txt");    Attempted to use files for saving user data
-
   _editPageState() {
-    //final contents = file.readAsLines();      <--- these two are also associated with
-    //file.writeAsString("contents");                file reading
     BlankCard createCard = BlankCard(
         name: userName, number: userNumber, email: userEmail, bio: userBio);
-    userCard = createCard;
-
-    //reassigns user data by using data from an object (supposedly to be the saved data) as part of the initialization
-
-    userName = userCard.getName();
-    userNumber = userCard.getNumber();
-    userEmail = userCard.getEmail();
-    userBio = userCard.getBio();
+    this.userCard = createCard;
   }
 
   @override
@@ -83,20 +70,23 @@ class _editPageState extends State<editPage> {
 
           // Text Fields
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Name",
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.all(20),
+                          isCollapsed: true,
+                          isDense: true,
+                          hintText: "Name",
                           filled: true,
                           fillColor: Colors.white),
                       onChanged: (value) {
                         setState(() {
                           userCard.editName(value);
-
                           userCard.build(context);
                         });
                       }),
@@ -105,7 +95,10 @@ class _editPageState extends State<editPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Phone Number",
+                          contentPadding: EdgeInsets.all(20),
+                          isCollapsed: true,
+                          isDense: true,
+                          hintText: "Phone Number",
                           filled: true,
                           fillColor: Colors.white),
                       onChanged: (value) {
@@ -119,7 +112,10 @@ class _editPageState extends State<editPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Email",
+                          contentPadding: EdgeInsets.all(20),
+                          isCollapsed: true,
+                          isDense: true,
+                          hintText: "Email",
                           filled: true,
                           fillColor: Colors.white),
                       onChanged: (value) {
@@ -133,7 +129,10 @@ class _editPageState extends State<editPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Description",
+                          contentPadding: EdgeInsets.all(20),
+                          isCollapsed: true,
+                          isDense: true,
+                          hintText: "Description",
                           filled: true,
                           fillColor: Colors.white),
                       onChanged: (value) {
