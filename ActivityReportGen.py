@@ -41,32 +41,58 @@ class ActivityReport:
             print(f"{task.getMinutes()} min \\")
             print(f"{task.getDescription()} \\")
             print(f"{task.getDate()}, 2023, at: {task.getStartTime()} moved to In Progress, {task.getEndTime()} moved to Review. \n")
-        print("Signed By: \\")
+        print("Signed By: \\\n")
+        print("-" * 105)
+
 
     def appendTask(self, task):
         self.tasks.append(task)
 
-# CHAT GPT's ADD MINUTES FUNCTION :^)
+
 def addMinutes(time_str, minutes):
-    # Convert input time to datetime object
     time_obj = datetime.datetime.strptime(time_str, "%I:%M %p")
-    # Add minutes to datetime object
     new_time_obj = time_obj + datetime.timedelta(minutes=minutes)
-    # Convert new time back to string
     new_time_str = new_time_obj.strftime("%I:%M %p")
-    # If new time is on a different day, add 12 hours to get correct AM/PM
     if (new_time_obj.day != time_obj.day):
         new_time_obj += datetime.timedelta(hours=12)
         new_time_str = new_time_obj.strftime("%I:%M %p")
-    # Return the new time
     return new_time_str
 
+def addDays(date_string, days):
+    date_object = datetime.datetime.strptime(date_string, '%B %d')
+    new_date = date_object + datetime.timedelta(days=days)
+    new_date_string = new_date.strftime('%B %d')
+    
+    return new_date_string
 
+def validTime():
+    test = False
+    while test == False:
+        time = input("What was the time?: ")
+        try:
+            time2 = addMinutes(time, 1)
+            test = True
+        except:
+            print("Invalid Formatting, Try Again")
+            continue
+    return time
+    
+def validMin():
+    test = False
+    while test == False:
+        try:
+            num = int(input("How many minutes did it take?: "))
+            test = True
+        except:
+            print("Not an integer, Try Again")
+            continue
+    return num
+        
 
 
 if __name__ == "__main__":
     startDate = input("Start of the Week (Month Date): ")
-    endDate = input("End of the Week (Month Date): ")
+    endDate = addDays(startDate, 6)
     issues = input("Any issues to report? (Put 'NONE' if none): ")
 
     report = ActivityReport(startDate, endDate, issues)
@@ -79,8 +105,8 @@ if __name__ == "__main__":
         taskName = input(f"What is the name of the task? (#{taskNumber}): ")
         userStory = input("What user story is this task under?: ")
         date = input("What was the date? (Month Date): ")
-        startTime = input("What was the time? (HH:MM AM or PM): ")
-        minutes = int(input("How many minutes did it take?: "))
+        startTime = validTime()
+        minutes = validMin()
         description = input("Describe what you did.: ")
         endTime = addMinutes(startTime, minutes)
 
@@ -92,5 +118,6 @@ if __name__ == "__main__":
             done = True
 
     report.printReport()
+
 
 

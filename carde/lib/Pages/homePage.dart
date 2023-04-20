@@ -31,7 +31,9 @@ class _HomePageState extends State<HomePage> {
           controller: _pageController,
           scrollDirection: Axis.horizontal,
           children: [
+            // QR Code Page
             scanPage(),
+            // middle Page
             Column(children: [
               // Top Title and Sorting Button
               Padding(
@@ -118,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: AddButton()),
             ]),
-            // Start of second page
+            // edit Page
             editPage(),
           ],
         ),
