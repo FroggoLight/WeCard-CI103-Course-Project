@@ -18,6 +18,9 @@ class editPage extends StatefulWidget {
 }
 
 class _editPageState extends State<editPage> {
+  final nameKey = GlobalKey<FormState>();
+  final numKey = GlobalKey<FormState>();
+  final emailKey = GlobalKey<FormState>();
   String userName = "";
   String userNumber = "";
   String userEmail = "";
@@ -72,59 +75,84 @@ class _editPageState extends State<editPage> {
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.all(20),
-                          isCollapsed: true,
-                          isDense: true,
-                          hintText: "Name",
-                          filled: true,
-                          fillColor: Colors.white),
-                      onChanged: (value) {
-                        setState(() {
-                          
-                          userCard.editName(value);
-                          userCard.build(context);
-                        }); 
-                      }),
+                  child: Form(
+                    key: nameKey,
+                    child: TextFormField(
+                        decoration: InputDecoration(
+                            labelText: "Name",
+                            filled: true,
+                            fillColor: Colors.white),
+                        validator: (value) {
+                          if (!RegExp(r"^[a-z A-Z,\',\-]+$").hasMatch(value!)) {
+                            return "(Invalid Name)";
+                          } else {
+                            return null;
+                          }
+                        },
+                        onChanged: (value) {
+                          nameKey.currentState!.validate();
+                          setState(() {
+                            userCard.editName(value);
+                            userCard.build(context);
+                          });
+                        }),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(20),
-                          isCollapsed: true,
-                          isDense: true,
-                          hintText: "Phone Number",
-                          filled: true,
-                          fillColor: Colors.white),
-                      onChanged: (value) {
-                        setState(() {
-                          userCard.editNumber(value);
-                          userCard.build(context);
-                        });
-                      }),
+                  child: Form(
+                    key: numKey,
+                    child: TextFormField(
+                        maxLength: 11,
+                        decoration: InputDecoration(
+                            labelText: "Phone Number",
+                            filled: true,
+                            fillColor: Colors.white),
+                        validator: (value) {
+                          if ((!RegExp(r"^[0-9]{10,11}").hasMatch(value!))) {
+                            return "(Invalid Number)";
+                          } else {
+                            return null;
+                          }
+                        },
+                        onChanged: (value) {
+                          numKey.currentState!.validate();
+                          setState(() {
+                            userCard.editNumber(value);
+                            userCard.build(context);
+                          });
+                        }),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(20),
-                          isCollapsed: true,
-                          isDense: true,
-                          hintText: "Email",
-                          filled: true,
-                          fillColor: Colors.white),
-                      onChanged: (value) {
-                        setState(() {
-                          userCard.editEmail(value);
-                          userCard.build(context);
-                        });
-                      }),
+                  child: Form(
+                    key: emailKey,
+                    child: TextFormField(
+                        decoration: InputDecoration(
+                            labelText: "Email",
+                            filled: true,
+                            fillColor: Colors.white),
+                        validator: (value) {
+                          if ((!RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}")
+                              .hasMatch(value!))) {
+                            return "(Invalid Email)";
+                          } else {
+                            return null;
+                          }
+                        },
+                        onChanged: (value) {
+                          emailKey.currentState!.validate();
+                          setState(() {
+                            userCard.editEmail(value);
+                            userCard.build(context);
+                          });
+                        }),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
