@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:carde/Elements/BlankCard.dart';
 import 'package:carde/Elements/PlaceHolderCard.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +73,7 @@ class _editPageState extends State<editPage> {
 
           // Text Fields
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -156,7 +158,10 @@ class _editPageState extends State<editPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Description",
+                          contentPadding: EdgeInsets.all(20),
+                          isCollapsed: true,
+                          isDense: true,
+                          hintText: "Description",
                           filled: true,
                           fillColor: Colors.white),
                       onChanged: (value) {
