@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:carde/Elements/BlankCard.dart';
 import 'package:carde/Elements/PlaceHolderCard.dart';
 import 'package:flutter/material.dart';
@@ -68,28 +70,36 @@ class _editPageState extends State<editPage> {
 
           // Text Fields
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Name",
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.all(20),
+                          isCollapsed: true,
+                          isDense: true,
+                          hintText: "Name",
                           filled: true,
                           fillColor: Colors.white),
                       onChanged: (value) {
                         setState(() {
+                          
                           userCard.editName(value);
                           userCard.build(context);
-                        });
+                        }); 
                       }),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Phone Number",
+                          contentPadding: EdgeInsets.all(20),
+                          isCollapsed: true,
+                          isDense: true,
+                          hintText: "Phone Number",
                           filled: true,
                           fillColor: Colors.white),
                       onChanged: (value) {
@@ -103,7 +113,10 @@ class _editPageState extends State<editPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Email",
+                          contentPadding: EdgeInsets.all(20),
+                          isCollapsed: true,
+                          isDense: true,
+                          hintText: "Email",
                           filled: true,
                           fillColor: Colors.white),
                       onChanged: (value) {
@@ -117,7 +130,10 @@ class _editPageState extends State<editPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Description",
+                          contentPadding: EdgeInsets.all(20),
+                          isCollapsed: true,
+                          isDense: true,
+                          hintText: "Description",
                           filled: true,
                           fillColor: Colors.white),
                       onChanged: (value) {
