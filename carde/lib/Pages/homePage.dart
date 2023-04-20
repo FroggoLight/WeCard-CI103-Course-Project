@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(25),
                         child: Expanded(
                           child: AspectRatio(
-                            aspectRatio: 1.59,
+                            aspectRatio: .84,
                             child: Container(
                                 child: PageView.builder(
                               // Page View for scrolling cards
