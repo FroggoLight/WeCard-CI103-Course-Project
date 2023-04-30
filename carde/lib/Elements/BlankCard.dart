@@ -39,63 +39,46 @@ class BlankCard extends StatelessWidget {
         child: AspectRatio(
           aspectRatio: 0.95,
           child: Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+              // Stuff Within The Card
               child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                // Stuff Within The Card
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                padding: EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Text Within The Card
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(this.name,
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 10),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                        color: Colors.grey,
-                                        borderRadius:
-                                            BorderRadius.circular(20))),
-                              ),
-                              SizedBox(height: 10),
-                              Text(this.number,
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold)),
-                              Text(this.email,
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 20),
-                              Text(this.bio, style: TextStyle(fontSize: 10))
-                            ],
-                          ),
-                        )
-                      ],
+                    SizedBox(
+                      height: 35,
+                      child: Text(this.name,
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold)),
                     ),
-                    // Picture Within The Card
-                
+                    SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.circular(20))),
+                    ),
+                    SizedBox(height: 10),
+                    Text(this.number,
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold)),
+                    SizedBox(
+                      height: 25,
+                      child: Text(this.email,
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
+                    ),
+                    SizedBox(
+                        child: Text(this.bio, style: TextStyle(fontSize: 15)))
                   ],
-                )),
-          )),
+                ),
+              )),
         ),
       ),
     );
