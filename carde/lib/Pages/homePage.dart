@@ -33,7 +33,9 @@ class _HomePageState extends State<HomePage> {
           controller: _pageController,
           scrollDirection: Axis.horizontal,
           children: [
+            // QR Code Page
             scanPage(),
+            // middle Page
             Column(children: [
               // Top Title and Sorting Button
               Padding(
@@ -86,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(25),
                         child: Expanded(
                           child: AspectRatio(
-                            aspectRatio: 1.59,
+                            aspectRatio: .84,
                             child: Container(
                                 child: PageView.builder(
                               // Page View for scrolling cards
@@ -120,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: AddButton()),
             ]),
-            // Start of second page
+            // edit Page
             editPage(),
           ],
         ),

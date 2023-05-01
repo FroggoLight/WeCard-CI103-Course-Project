@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class BlankCard extends StatelessWidget {
@@ -48,10 +50,10 @@ class BlankCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: const EdgeInsets.symmetric(horizontal: 55),
       child: Expanded(
         child: AspectRatio(
-          aspectRatio: 1.59,
+          aspectRatio: 0.95,
           child: Container(
               child: Padding(
             padding: EdgeInsets.all(8.0),
@@ -62,7 +64,7 @@ class BlankCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20)),
                 // Stuff Within The Card
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Text Within The Card
                     Column(
@@ -71,12 +73,25 @@ class BlankCard extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(this.name,
                                   style: TextStyle(
                                       fontSize: 30,
                                       fontWeight: FontWeight.bold)),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey,
+                                        borderRadius:
+                                            BorderRadius.circular(20))),
+                              ),
+                              SizedBox(height: 10),
                               Text(this.number,
                                   style: TextStyle(
                                       fontSize: 17,
@@ -85,6 +100,7 @@ class BlankCard extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold)),
+                              SizedBox(height: 20),
                               Text(this.bio, style: TextStyle(fontSize: 10))
                             ],
                           ),
@@ -92,15 +108,7 @@ class BlankCard extends StatelessWidget {
                       ],
                     ),
                     // Picture Within The Card
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Container(
-                          width: 130,
-                          height: 175,
-                          decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(20))),
-                    )
+                
                   ],
                 )),
           )),
