@@ -33,14 +33,14 @@ class ActivityReport:
         self.tasks = tasks
     
     def printReport(self):
-        print(f"**{startDate} - {endDate}**\n")
+        print(f"**{startDate} - {endDate}, 2023**\n")
         print(f"Issues: {issues}\n")
         print(f"Activity Report:\n")
         for task in self.tasks:
             print(f"{task.getUserStory()} - {task.getName()} - TO DO \\")
             print(f"{task.getMinutes()} min \\")
             print(f"{task.getDescription()} \\")
-            print(f"{task.getDate()}, 2023, at: {task.getStartTime()} moved to In Progress, {task.getEndTime()} moved to Review. \n")
+            print(f"_{task.getDate()}, 2023, at: {task.getStartTime()} moved to In Progress, {task.getEndTime()} moved to Review._\n")
         print("Signed By: \\\n")
         print("-" * 105)
 

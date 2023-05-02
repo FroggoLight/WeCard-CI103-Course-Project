@@ -50,70 +50,68 @@ class BlankCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 55),
-      child: Expanded(
-        child: AspectRatio(
-          aspectRatio: 0.95,
-          child: Container(
-              child: Padding(
-            padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 55),
+        child: Expanded(
+          child: AspectRatio(
+            aspectRatio: 1.00,
             child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                // Stuff Within The Card
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Text Within The Card
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+              // Stuff Within The Card
+              child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    // Stuff Within The Card
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(this.name,
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 10),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                        color: Colors.grey,
-                                        borderRadius:
-                                            BorderRadius.circular(20))),
+                        // Text Within The Card
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(this.name,
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold)),
+                                  SizedBox(height: 10),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30.0),
+                                    child: Image.asset(
+                                        "assets/images/cardTest.jpg",
+                                        width: 100,
+                                        height: 100,
+                                        fit: BoxFit.cover),
+                                  ),
+                                  Text(this.number,
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold)),
+                                  Text(this.email,
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold)),
+                                  Text(this.bio, style: TextStyle(fontSize: 10))
+                                ],
                               ),
-                              SizedBox(height: 10),
-                              Text(this.number,
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold)),
-                              Text(this.email,
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 20),
-                              Text(this.bio, style: TextStyle(fontSize: 10))
-                            ],
-                          ),
-                        )
+                            )
+                          ],
+                        ),
                       ],
                     ),
-                    // Picture Within The Card
-                
-                  ],
-                )),
-          )),
-        ),
-      ),
-    );
+                  )),
+            ),
+          ),
+        ));
   }
 }
