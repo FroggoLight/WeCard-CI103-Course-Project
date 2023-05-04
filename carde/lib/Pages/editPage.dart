@@ -83,11 +83,7 @@ class _editPageState extends State<editPage> {
                     key: nameKey,
                     child: TextFormField(
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.all(20),
-                            isCollapsed: true,
-                            isDense: true,
-                            hintText: "Name",
+                            labelText: "Name",
                             filled: true,
                             fillColor: Colors.white),
                         validator: (value) {
@@ -113,10 +109,7 @@ class _editPageState extends State<editPage> {
                     child: TextFormField(
                         maxLength: 11,
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(20),
-                            isCollapsed: true,
-                            isDense: true,
-                            hintText: "Phone Number",
+                            labelText: "Phone Number",
                             filled: true,
                             fillColor: Colors.white),
                         validator: (value) {
@@ -141,10 +134,7 @@ class _editPageState extends State<editPage> {
                     key: emailKey,
                     child: TextFormField(
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(20),
-                            isCollapsed: true,
-                            isDense: true,
-                            hintText: "Email",
+                            labelText: "Email",
                             filled: true,
                             fillColor: Colors.white),
                         validator: (value) {
