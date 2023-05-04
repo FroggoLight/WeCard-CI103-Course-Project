@@ -34,7 +34,7 @@ class _editPageState extends State<editPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return ListView(children: [
       // Row for top title
       Padding(
         padding: const EdgeInsets.all(40.0),
