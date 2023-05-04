@@ -56,13 +56,9 @@ class BlankCard extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(20))),
+                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      child: Image.asset("assets/images/pfp_placeholder.png",
+                          width: 100, height: 100, fit: BoxFit.cover),
                     ),
                     SizedBox(height: 10),
                     Text(this.number,
