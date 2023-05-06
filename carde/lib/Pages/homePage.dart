@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:carde/Elements/AddButton.dart';
-import 'package:carde/Elements/PlaceHolderCard.dart';
+import 'package:carde/Widgets/AddButton.dart';
+import 'package:carde/Widgets/PlaceHolderCard.dart';
 import 'package:carde/Pages/editPage.dart';
 import 'package:carde/Pages/scanPage.dart';
 import 'package:flutter/material.dart';
-import 'package:carde/Functions/searchBar.dart';
+import 'package:carde/Widgets/searchBar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

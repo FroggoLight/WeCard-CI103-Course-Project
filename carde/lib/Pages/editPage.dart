@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:carde/Elements/BlankCard.dart';
-import 'package:carde/Elements/PlaceHolderCard.dart';
+import 'package:carde/Widgets/BlankCard.dart';
+import 'package:carde/Widgets/PlaceHolderCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'dart:math' as math;
-import '../Elements/AddButton.dart';
+import '../Widgets/AddButton.dart';
 
 void main() {}
 
