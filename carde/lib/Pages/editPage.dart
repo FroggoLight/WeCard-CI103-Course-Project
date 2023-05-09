@@ -25,10 +25,15 @@ class _editPageState extends State<editPage> {
   String userNumber = "";
   String userEmail = "";
   String userBio = "";
+  String userProfileImage = "assets/images/pfp_placeholder.png";
   var userCard;
   _editPageState() {
     BlankCard createCard = BlankCard(
-        name: userName, number: userNumber, email: userEmail, bio: userBio);
+        name: userName,
+        number: userNumber,
+        email: userEmail,
+        bio: userBio,
+        profileImage: userProfileImage);
     this.userCard = createCard;
   }
 

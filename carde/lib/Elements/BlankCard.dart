@@ -7,13 +7,15 @@ class BlankCard extends StatelessWidget {
   String number;
   String email;
   String bio;
+  String profileImage;
 
   BlankCard(
       {super.key,
       required this.name,
       required this.number,
       required this.email,
-      required this.bio});
+      required this.bio,
+      required this.profileImage});
 
   editName(newName) {
     this.name = newName;
@@ -29,6 +31,10 @@ class BlankCard extends StatelessWidget {
 
   editBio(newBio) {
     this.bio = newBio;
+  }
+
+  editProfileImage(newImage) {
+    this.profileImage = newImage;
   }
 
   @override
@@ -48,16 +54,19 @@ class BlankCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 35,
-                      child: Text(this.name,
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold)),
-                    ),
+                    GestureDetector(
+                        //height: 35,
+                        child: Text(this.name,
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold)),
+                        onTap: () {
+                          print(
+                              "This indeed works somewhat"); // <- TO DO, most likely need a prompt for a textfield
+                        }),
                     SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                      child: Image.asset("assets/images/pfp_placeholder.png",
+                      child: Image.asset(this.profileImage,
                           width: 100, height: 100, fit: BoxFit.cover),
                     ),
                     SizedBox(height: 10),

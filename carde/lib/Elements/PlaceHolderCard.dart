@@ -25,17 +25,16 @@ class PlaceHolder extends StatelessWidget {
                   Text("Your Name",
                       style:
                           TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-                  SizedBox(height: 20),     
+                  SizedBox(height: 20),
                   Container(
                       width: 120,
                       height: 120,
-              
                       decoration: BoxDecoration(
                           color: Color((math.Random().nextDouble() * 0xFFFFFF)
                                   .toInt())
                               .withOpacity(1.0),
                           borderRadius: BorderRadius.circular(20))),
-                  SizedBox(height: 20), 
+                  SizedBox(height: 20),
                   Text("email@gmail.com",
                       style:
                           TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
@@ -44,8 +43,8 @@ class PlaceHolder extends StatelessWidget {
                           TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                   SizedBox(height: 20),
                   Text("Bio or Other info",
-                      style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.normal)),
+                      style: TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
                 ],
               ),
               // Picture Within The Card
