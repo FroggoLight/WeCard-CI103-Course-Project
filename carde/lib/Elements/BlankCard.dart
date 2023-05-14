@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
+import "dart:io";
 
+import "package:image_picker/image_picker.dart";
 import 'package:flutter/material.dart';
 
 class BlankCard extends StatelessWidget {
@@ -7,7 +9,7 @@ class BlankCard extends StatelessWidget {
   String number;
   String email;
   String bio;
-  String profileImage;
+  File image;
 
   BlankCard(
       {super.key,
@@ -15,7 +17,7 @@ class BlankCard extends StatelessWidget {
       required this.number,
       required this.email,
       required this.bio,
-      required this.profileImage});
+      required this.image});
 
   editName(newName) {
     this.name = newName;
@@ -33,8 +35,8 @@ class BlankCard extends StatelessWidget {
     this.bio = newBio;
   }
 
-  editProfileImage(newImage) {
-    this.profileImage = newImage;
+  editImage(newImage) {
+    this.image = newImage;
   }
 
   @override
@@ -66,8 +68,10 @@ class BlankCard extends StatelessWidget {
                     SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                      child: Image.asset(this.profileImage,
-                          width: 100, height: 100, fit: BoxFit.cover),
+                      child: image == null
+                          ? Image.asset("assets/images/pfp_placeholder.png")
+                          : Image.file(this.image,
+                              width: 100, height: 100, fit: BoxFit.cover),
                     ),
                     SizedBox(height: 10),
                     Text(this.number,

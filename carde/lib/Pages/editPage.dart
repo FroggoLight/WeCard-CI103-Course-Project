@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
+import "dart:io";
 
+import "package:image_picker/image_picker.dart";
 import 'package:carde/Elements/BlankCard.dart';
 import 'package:carde/Elements/PlaceHolderCard.dart';
 import 'package:flutter/material.dart';
@@ -21,11 +23,12 @@ class _editPageState extends State<editPage> {
   final nameKey = GlobalKey<FormState>();
   final numKey = GlobalKey<FormState>();
   final emailKey = GlobalKey<FormState>();
+
   String userName = "";
   String userNumber = "";
   String userEmail = "";
   String userBio = "";
-  String userProfileImage = "assets/images/pfp_placeholder.png";
+  File userImage = File("test.txt");
   var userCard;
   _editPageState() {
     BlankCard createCard = BlankCard(
@@ -33,8 +36,19 @@ class _editPageState extends State<editPage> {
         number: userNumber,
         email: userEmail,
         bio: userBio,
-        profileImage: userProfileImage);
+        image: userImage);
     this.userCard = createCard;
+  }
+
+  Future selectImage(ImageSource source) async {
+    // ignore: unused_local_variable
+    final image = await ImagePicker().pickImage(source: source);
+    if (image == null) return;
+    File? img = File(image.path);
+    setState(() {
+      userImage = img;
+      userCard.editImage(userImage);
+    });
   }
 
   @override
@@ -175,7 +189,12 @@ class _editPageState extends State<editPage> {
                           userCard.build(context);
                         });
                       }),
-                )
+                ),
+                ElevatedButton(
+                    child: Text("Hi"),
+                    onPressed: () {
+                      selectImage(ImageSource.gallery);
+                    })
               ],
             ),
           ),
