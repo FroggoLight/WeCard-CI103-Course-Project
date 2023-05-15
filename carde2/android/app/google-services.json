@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "362327435420",
+    "project_id": "wecard-78c44",
+    "storage_bucket": "wecard-78c44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362327435420:android:6aa2d2296afed3dd30a559",
+        "android_client_info": {
+          "package_name": "com.example.carde2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362327435420-pkcjstp8d789a4d9m1clgtoocg701q7f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuAGbP-yuEMHiqXiNhbfi3x2AhLNK-11U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362327435420-pkcjstp8d789a4d9m1clgtoocg701q7f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "362327435420-9icccu0svser68npfha6nlbldp1d68lk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.carde2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
