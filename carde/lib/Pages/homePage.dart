@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
           scrollDirection: Axis.horizontal,
           children: [
             // QR Code Page
-            scanPage(),
+            QRCodeScreen(),
             // middle Page
             Column(children: [
               // Top Title and Sorting Button
