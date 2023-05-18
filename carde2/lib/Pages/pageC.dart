@@ -24,6 +24,7 @@ class _RightPageState extends State<RightPage> {
   String previewEmail = '';
   String previewBio = '';
   Color color = Colors.grey;
+  String userID = FirebaseAuth.instance.currentUser!.uid;
 
   void signOut() async {
     await FirebaseAuth.instance.signOut();
@@ -36,12 +37,12 @@ class _RightPageState extends State<RightPage> {
       previewEmail = _emailController.text.trim();
       previewBio = _bioController.text.trim();
     });
-    await FirebaseFirestore.instance.collection('users').add({
+    await FirebaseFirestore.instance.collection('users').doc(userID).set({
       'name': _nameController.text.trim(),
       'number': _numberController.text.trim(),
       'email': _emailController.text.trim(),
       'bio': _bioController.text.trim()
-    });
+    }, SetOptions(merge: true));
   }
 
   void changeColor() {}
@@ -77,7 +78,7 @@ class _RightPageState extends State<RightPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Save to Preview Card",
+              Text("Share Code: $userID",
                   style: TextStyle(fontSize: 15, color: Colors.white)),
             ],
           ),
