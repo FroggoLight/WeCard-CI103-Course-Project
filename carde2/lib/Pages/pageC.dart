@@ -19,29 +19,30 @@ class _RightPageState extends State<RightPage> {
   final _numberController = TextEditingController();
   final _emailController = TextEditingController();
   final _bioController = TextEditingController();
-  String previewName = '';
-  String previewNumber = '';
-  String previewEmail = '';
-  String previewBio = '';
   Color color = Colors.grey;
+  String userID = FirebaseAuth.instance.currentUser!.uid;
 
   void signOut() async {
     await FirebaseAuth.instance.signOut();
   }
 
   void saveCard() async {
+    DocumentReference userDocRef =
+        await FirebaseFirestore.instance.collection('users').doc(userID);
     setState(() {
-      previewName = _nameController.text.trim();
-      previewNumber = _numberController.text.trim();
-      previewEmail = _emailController.text.trim();
-      previewBio = _bioController.text.trim();
+      userDocRef.set({
+        'name': _nameController.text.trim(),
+        'number': _numberController.text.trim(),
+        'email': _emailController.text.trim(),
+        'bio': _bioController.text.trim()
+      }, SetOptions(merge: true));
     });
-    await FirebaseFirestore.instance.collection('users').add({
-      'name': _nameController.text.trim(),
-      'number': _numberController.text.trim(),
-      'email': _emailController.text.trim(),
-      'bio': _bioController.text.trim()
-    });
+  }
+
+  Future<DocumentSnapshot> getData() async {
+    DocumentSnapshot snapshot =
+        await FirebaseFirestore.instance.collection('users').doc(userID).get();
+    return snapshot;
   }
 
   void changeColor() {}
@@ -51,7 +52,7 @@ class _RightPageState extends State<RightPage> {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 55, 55, 55),
         body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          SizedBox(height: 70),
+          SizedBox(height: 50),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text("Edit",
                 style: TextStyle(
@@ -67,48 +68,62 @@ class _RightPageState extends State<RightPage> {
           SizedBox(height: 15),
           GestureDetector(
             onTap: changeColor,
-            child: MyCard(
-                name: previewName,
-                number: previewNumber,
-                email: previewEmail,
-                bio: previewBio,
-                color: color),
+            child: FutureBuilder<DocumentSnapshot>(
+                future: getData(),
+                builder: (context, snapshot) {
+                  return MyCard(
+                      name: snapshot.data!.get('name') as String,
+                      number: snapshot.data!.get('number') as String,
+                      email: snapshot.data!.get('email') as String,
+                      bio: snapshot.data!.get('bio') as String,
+                      color: color);
+                }),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Save to Preview Card",
+              Text("Share Code: $userID",
                   style: TextStyle(fontSize: 15, color: Colors.white)),
             ],
           ),
           SizedBox(height: 15),
           Expanded(
-              child: ListView(
-            children: [
-              MyTextField(
-                  controller: _nameController,
-                  hintText: "Display Name",
-                  obscureText: false),
-              MyTextField(
-                  controller: _numberController,
-                  hintText: "Display Number",
-                  obscureText: false),
-              MyTextField(
-                  controller: _emailController,
-                  hintText: "Display Email",
-                  obscureText: false),
-              MyTextField(
-                  controller: _bioController,
-                  hintText: "Other Contact Information",
-                  obscureText: false),
-              SizedBox(height: 10),
-              MyButton(
-                  onTap: saveCard,
-                  text: "Save Information",
-                  color: Colors.white),
-              SizedBox(height: 30),
-              MyButton(onTap: signOut, text: "Log Out", color: Colors.red)
-            ],
+              child: FutureBuilder<DocumentSnapshot>(
+            future: getData(),
+            builder: (context, snapshot) {
+              _nameController.text = snapshot.data!.get('name') as String;
+              _numberController.text = snapshot.data!.get('number') as String;
+              _emailController.text = snapshot.data!.get('email') as String;
+              _bioController.text = snapshot.data!.get('bio') as String;
+              return ListView(
+                children: [
+                  MyTextField(
+                      controller: _nameController,
+                      hintText: "Display Name",
+                      obscureText: false),
+                  MyTextField(
+                      controller: _numberController,
+                      hintText: "Display Number",
+                      obscureText: false),
+                  MyTextField(
+                      controller: _emailController,
+                      hintText: "Display Email",
+                      obscureText: false),
+                  MyTextField(
+                      controller: _bioController,
+                      hintText: "Other Contact Information",
+                      obscureText: false),
+                  SizedBox(height: 10),
+                  MyButton(
+                      onTap: saveCard,
+                      text: "Save Information",
+                      color: Colors.white),
+                  SizedBox(height: 30),
+                  MyButton(onTap: signOut, text: "Log Out", color: Colors.red),
+                  SizedBox(height: 50),
+                ],
+              );
+            },
           ))
         ]));
   }
