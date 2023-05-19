@@ -36,9 +36,9 @@ class MyCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(name, style: TextStyle(fontSize: 20)),
-                        Text(number, style: TextStyle(fontSize: 20)),
-                        Text(email, style: TextStyle(fontSize: 20)),
-                        Text(bio, style: TextStyle(fontSize: 20))
+                        Text(number, style: TextStyle(fontSize: 12)),
+                        Text(email, style: TextStyle(fontSize: 12)),
+                        Text(bio, style: TextStyle(fontSize: 12))
                       ],
                     )),
                   ),

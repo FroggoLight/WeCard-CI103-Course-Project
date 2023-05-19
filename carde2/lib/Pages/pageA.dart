@@ -49,12 +49,16 @@ class _LeftPageState extends State<LeftPage> {
     return querySnapshot.docs.isNotEmpty;
   }
 
+  void signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 55, 55, 55),
         body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          SizedBox(height: 70),
+          SizedBox(height: 50),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text("Share",
                 style: TextStyle(
@@ -71,7 +75,8 @@ class _LeftPageState extends State<LeftPage> {
               controller: _textController,
               hintText: "Enter Share Code",
               obscureText: false),
-          MyButton(onTap: saveCard, text: "Add Card", color: Colors.white)
+          MyButton(onTap: saveCard, text: "Add Card", color: Colors.white),
+          MyButton(onTap: signOut, text: "Log Out", color: Colors.red),
         ]));
   }
 }

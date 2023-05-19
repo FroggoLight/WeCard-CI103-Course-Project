@@ -21,14 +21,29 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmPasswordController = TextEditingController();
   final userRepository = Get.put(UserRepository());
   final blankUser = UserModel(name: '', number: '', email: '', bio: '');
+
   Future signUp() async {
     if (passwordMatch()) {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
+      initData();
     } else {
       return passwordNotMatch();
     }
+  }
+
+  initData() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set({
+      'name': '',
+      'number': '',
+      'email': _emailController.text.trim(),
+      'bio': '',
+      'cardCollection': []
+    });
   }
 
   bool passwordMatch() {
