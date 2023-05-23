@@ -9,6 +9,7 @@ class BlankCard extends StatelessWidget {
   String number;
   String email;
   String bio;
+  Color cardColor;
   File image;
 
   BlankCard(
@@ -17,6 +18,7 @@ class BlankCard extends StatelessWidget {
       required this.number,
       required this.email,
       required this.bio,
+      required this.cardColor,
       required this.image});
 
   editName(newName) {
@@ -49,7 +51,7 @@ class BlankCard extends StatelessWidget {
           child: Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                  color: cardColor, borderRadius: BorderRadius.circular(20)),
               // Stuff Within The Card
               child: Padding(
                 padding: EdgeInsets.all(8.0),

@@ -28,6 +28,7 @@ class _editPageState extends State<editPage> {
   String userNumber = "";
   String userEmail = "";
   String userBio = "";
+  Color userColor = Colors.white;
   File userImage = File("test.txt");
   var userCard;
   _editPageState() {
@@ -36,6 +37,7 @@ class _editPageState extends State<editPage> {
         number: userNumber,
         email: userEmail,
         bio: userBio,
+        cardColor: userColor,
         image: userImage);
     this.userCard = createCard;
   }
@@ -194,6 +196,11 @@ class _editPageState extends State<editPage> {
                     child: Text("Hi"),
                     onPressed: () {
                       selectImage(ImageSource.gallery);
+                    }),
+                ElevatedButton(
+                    child: Text("Select Color"),
+                    onPressed: () {
+                      print("test");
                     })
               ],
             ),
