@@ -1,10 +1,13 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:carde2/Pages/scanner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../components/button.dart';
 import '../components/textfield.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class LeftPage extends StatefulWidget {
   LeftPage({super.key});
@@ -15,6 +18,9 @@ class LeftPage extends StatefulWidget {
 
 class _LeftPageState extends State<LeftPage> {
   final _textController = TextEditingController();
+  final qrKey = GlobalKey(debugLabel: "QR");
+  QRViewController? controller;
+  String userID = FirebaseAuth.instance.currentUser!.uid;
 
   void saveCard() async {
     String userID = await FirebaseAuth.instance.currentUser!.uid;
@@ -54,6 +60,12 @@ class _LeftPageState extends State<LeftPage> {
   }
 
   @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 55, 55, 55),
@@ -71,12 +83,36 @@ class _LeftPageState extends State<LeftPage> {
                     fontSize: 50,
                     fontWeight: FontWeight.w900))
           ]),
+          QrImageView(
+            data: userID,
+            version: QrVersions.auto,
+            size: 200,
+            backgroundColor: Colors.white,
+          ),
           MyTextField(
               controller: _textController,
               hintText: "Enter Share Code",
               obscureText: false),
           MyButton(onTap: saveCard, text: "Add Card", color: Colors.white),
           MyButton(onTap: signOut, text: "Log Out", color: Colors.red),
+          GestureDetector(
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              color: Colors.white,
+              width: 48,
+              height: 48,
+            ),
+            onTap: () => scannerPage(),
+          ),
         ]));
+  }
+
+  Widget buildQrView(BuildContext context) => QRView(
+        key: qrKey,
+        onQRViewCreated: onQRViewCreated,
+      );
+
+  void onQRViewCreated(QRViewController controller) {
+    setState(() => this.controller = controller);
   }
 }
