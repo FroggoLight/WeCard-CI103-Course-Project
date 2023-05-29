@@ -18,8 +18,6 @@ class LeftPage extends StatefulWidget {
 
 class _LeftPageState extends State<LeftPage> {
   final _textController = TextEditingController();
-  final qrKey = GlobalKey(debugLabel: "QR");
-  QRViewController? controller;
   String userID = FirebaseAuth.instance.currentUser!.uid;
 
   void saveCard() async {
@@ -60,12 +58,6 @@ class _LeftPageState extends State<LeftPage> {
   }
 
   @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 55, 55, 55),
@@ -95,24 +87,6 @@ class _LeftPageState extends State<LeftPage> {
               obscureText: false),
           MyButton(onTap: saveCard, text: "Add Card", color: Colors.white),
           MyButton(onTap: signOut, text: "Log Out", color: Colors.red),
-          GestureDetector(
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              color: Colors.white,
-              width: 48,
-              height: 48,
-            ),
-            onTap: () => scannerPage(),
-          ),
         ]));
-  }
-
-  Widget buildQrView(BuildContext context) => QRView(
-        key: qrKey,
-        onQRViewCreated: onQRViewCreated,
-      );
-
-  void onQRViewCreated(QRViewController controller) {
-    setState(() => this.controller = controller);
   }
 }

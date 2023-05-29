@@ -6,6 +6,7 @@ import '../pageB.dart';
 import '../pageC.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../scanner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
               _currentPage = index;
             });
           },
-          children: [LeftPage(), MiddlePage(), RightPage()]),
+          children: [scannerPage(), LeftPage(), MiddlePage(), RightPage()]),
       bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Color.fromARGB(255, 55, 55, 55),
           color: Colors.black,
@@ -47,6 +48,7 @@ class _HomePageState extends State<HomePage> {
           index: _currentPage,
           items: [
             Icon(Icons.add, color: Colors.white),
+            Icon(Icons.share, color: Colors.white),
             Icon(Icons.home, color: Colors.white),
             Icon(Icons.person, color: Colors.white)
           ]),
