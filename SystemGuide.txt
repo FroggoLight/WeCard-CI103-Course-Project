@@ -1,0 +1,63 @@
+Minimum Hardware Requirements:
+A computer with at least 4GB of RAM and a dual-core processor.
+An Android or iOS device for testing the app.
+A stable internet connection.
+
+
+
+Installation Guide:
+Visit the Flutter website (https://flutter.dev) and follow the installation instructions specific to your operating system.
+Set up the Flutter development environment by configuring the necessary paths and variables.
+Set up Firebase:
+
+Create a Firebase project (https://console.firebase.google.com) and configure your app within the project.
+Enable the Firebase Authentication and Firebase Firestore services for your app.
+Obtain the necessary Firebase configuration files (e.g., google-services.json for Android, GoogleService-Info.plist for iOS) and include them in your Flutter project.
+Clone the Project:
+
+Clone or download the source code for the Flutter digital business card app from the repository.
+Set up Dependencies:
+
+Open the project in your preferred code editor.
+Run flutter pub get in the terminal to fetch and install the required dependencies.
+Run the App:
+
+Connect your Android or iOS device to your computer.
+Run flutter run in the terminal to start the app on your connected device.
+
+
+
+Gradle Build Errors:
+These errors may occur during the build process for Android. Make sure you have the correct version of Gradle installed and configured.
+
+CocoaPods Errors:
+These errors may occur during the build process for iOS. Ensure you have CocoaPods installed and run pod install in the ios directory of your project.
+Troubleshooting Guide:
+
+Firebase Configuration Errors:
+Ensure that you have correctly configured Firebase in your project by checking the Firebase console settings and the inclusion of the correct configuration files.
+Double-check the dependencies and versions specified in your pubspec.yaml file.
+Plugin Compatibility Issues:
+
+If you encounter errors related to specific Flutter plugins, check the plugin documentation and verify that you are using compatible versions of the plugins with your Flutter SDK.
+Connection Issues:
+
+If you experience connectivity issues with Firebase, make sure you have a stable internet connection.
+Check your Firebase project's security rules and ensure they allow the necessary read and write operations.
+Device Compatibility:
+
+Ensure that your Android or iOS device meets the minimum requirements for running Flutter apps.
+Update your device's operating system and make sure it is compatible with the Flutter SDK version you are using.
+
+
+
+Got Questions? Email Us! (Contact Information):
+
+Bill Liu (Fullstack Developer):
+bl698@drexel.edu
+
+Zhixian Li (Fullstack Developer):
+zl527@drexel.edu
+
+Jiahao Wang (Fullstack Developer):
+jw3844@drexel.edu
