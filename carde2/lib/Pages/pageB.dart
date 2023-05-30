@@ -32,6 +32,8 @@ class _MiddlePageState extends State<MiddlePage> {
     return snapshot;
   }
 
+  void removeCard() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
