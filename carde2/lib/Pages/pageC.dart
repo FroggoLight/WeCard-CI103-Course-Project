@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../components/button.dart';
 import '../components/card.dart';
 import '../components/textfield.dart';
@@ -56,14 +57,14 @@ class _RightPageState extends State<RightPage> {
           SizedBox(height: 50),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text("Edit",
-                style: TextStyle(
+                style: GoogleFonts.lalezar(
                     color: Color.fromARGB(255, 255, 255, 255),
-                    fontSize: 40,
+                    fontSize: 60,
                     fontWeight: FontWeight.w400)),
             Text("Card",
-                style: TextStyle(
+                style: GoogleFonts.lalezar(
                     color: Color.fromARGB(255, 20, 161, 27),
-                    fontSize: 50,
+                    fontSize: 60,
                     fontWeight: FontWeight.w900))
           ]),
           SizedBox(height: 15),

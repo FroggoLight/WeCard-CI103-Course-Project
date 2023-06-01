@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../components/button.dart';
 import '../../components/textfield.dart';
 
@@ -74,20 +75,20 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(height: 100),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text("We",
-                style: TextStyle(
+                style: GoogleFonts.lalezar(
                     color: Color.fromARGB(255, 255, 255, 255),
-                    fontSize: 60,
+                    fontSize: 70,
                     fontWeight: FontWeight.w400)),
             Text("Card",
-                style: TextStyle(
+                style: GoogleFonts.lalezar(
                     color: Color.fromARGB(255, 20, 161, 27),
-                    fontSize: 60,
+                    fontSize: 70,
                     fontWeight: FontWeight.w900))
           ]),
           SizedBox(height: 20),
           Text("Log in or Register",
               style: TextStyle(color: Colors.white, fontSize: 20)),
-          SizedBox(height: 17),
+          SizedBox(height: 5),
           MyTextField(
               controller: _emailController,
               hintText: "Enter Email",
