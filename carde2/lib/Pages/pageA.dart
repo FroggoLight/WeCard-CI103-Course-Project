@@ -53,10 +53,6 @@ class _LeftPageState extends State<LeftPage> {
     return querySnapshot.docs.isNotEmpty;
   }
 
-  void signOut() async {
-    await FirebaseAuth.instance.signOut();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,18 +71,35 @@ class _LeftPageState extends State<LeftPage> {
                     fontSize: 50,
                     fontWeight: FontWeight.w900))
           ]),
+          SizedBox(height: 15),
+          MyTextField(
+              controller: _textController,
+              hintText: "Enter Share Code",
+              obscureText: false),
+          SizedBox(height: 5),
+          MyButton(onTap: saveCard, text: "Add Card", color: Colors.white),
+          SizedBox(height: 50),
           QrImageView(
             data: userID,
             version: QrVersions.auto,
             size: 200,
             backgroundColor: Colors.white,
           ),
-          MyTextField(
-              controller: _textController,
-              hintText: "Enter Share Code",
-              obscureText: false),
-          MyButton(onTap: saveCard, text: "Add Card", color: Colors.white),
-          MyButton(onTap: signOut, text: "Log Out", color: Colors.red),
+          SizedBox(height: 10),
+          Text("$userID", style: TextStyle(fontSize: 15, color: Colors.white)),
+          SizedBox(height: 25),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ScannerPage()));
+              },
+              child: Container(
+                  width: 90,
+                  height: 90,
+                  decoration: BoxDecoration(
+                      color: Colors.black, shape: BoxShape.circle),
+                  child: Icon(Icons.camera_alt_outlined, color: Colors.white))),
+          SizedBox(height: 25),
         ]));
   }
 }

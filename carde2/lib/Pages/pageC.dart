@@ -19,6 +19,7 @@ class _RightPageState extends State<RightPage> {
   final _numberController = TextEditingController();
   final _emailController = TextEditingController();
   final _bioController = TextEditingController();
+  final _loadingController = TextEditingController();
   Color color = Colors.grey;
   String userID = FirebaseAuth.instance.currentUser!.uid;
 
@@ -71,6 +72,24 @@ class _RightPageState extends State<RightPage> {
             child: FutureBuilder<DocumentSnapshot>(
                 future: getData(),
                 builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return MyCard(
+                      name: 'Error',
+                      number: '',
+                      email: '',
+                      bio: '',
+                      color: Colors.grey,
+                    );
+                  }
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return MyCard(
+                      name: 'Loading...',
+                      number: '',
+                      email: '',
+                      bio: '',
+                      color: Colors.grey,
+                    );
+                  }
                   return MyCard(
                       name: snapshot.data!.get('name') as String,
                       number: snapshot.data!.get('number') as String,
@@ -78,13 +97,6 @@ class _RightPageState extends State<RightPage> {
                       bio: snapshot.data!.get('bio') as String,
                       color: color);
                 }),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Share Code: $userID",
-                  style: TextStyle(fontSize: 15, color: Colors.white)),
-            ],
           ),
           SizedBox(height: 15),
           Expanded(
@@ -95,6 +107,69 @@ class _RightPageState extends State<RightPage> {
               _numberController.text = snapshot.data!.get('number') as String;
               _emailController.text = snapshot.data!.get('email') as String;
               _bioController.text = snapshot.data!.get('bio') as String;
+              if (snapshot.hasError) {
+                return ListView(
+                  children: [
+                    MyTextField(
+                        controller: _loadingController,
+                        hintText: "Display Name",
+                        obscureText: false),
+                    MyTextField(
+                        controller: _loadingController,
+                        hintText: "Display Number",
+                        obscureText: false),
+                    MyTextField(
+                        controller: _loadingController,
+                        hintText: "Display Email",
+                        obscureText: false),
+                    MyTextField(
+                        controller: _loadingController,
+                        hintText: "Other Contact Information",
+                        obscureText: false),
+                    SizedBox(height: 10),
+                    MyButton(
+                        onTap: saveCard,
+                        text: "Save Information",
+                        color: Colors.white),
+                    SizedBox(height: 30),
+                    MyButton(
+                        onTap: signOut, text: "Log Out", color: Colors.red),
+                    SizedBox(height: 50),
+                  ],
+                );
+              }
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return ListView(
+                  children: [
+                    MyTextField(
+                        controller: _loadingController,
+                        hintText: "Display Name",
+                        obscureText: false),
+                    MyTextField(
+                        controller: _loadingController,
+                        hintText: "Display Number",
+                        obscureText: false),
+                    MyTextField(
+                        controller: _loadingController,
+                        hintText: "Display Email",
+                        obscureText: false),
+                    MyTextField(
+                        controller: _loadingController,
+                        hintText: "Other Contact Information",
+                        obscureText: false),
+                    SizedBox(height: 10),
+                    MyButton(
+                        onTap: saveCard,
+                        text: "Save Information",
+                        color: Colors.white),
+                    SizedBox(height: 30),
+                    MyButton(
+                        onTap: signOut, text: "Log Out", color: Colors.red),
+                    SizedBox(height: 50),
+                  ],
+                );
+              }
+
               return ListView(
                 children: [
                   MyTextField(

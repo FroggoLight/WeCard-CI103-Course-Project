@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
               _currentPage = index;
             });
           },
-          children: [scannerPage(), LeftPage(), MiddlePage(), RightPage()]),
+          children: [LeftPage(), MiddlePage(), RightPage()]),
       bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Color.fromARGB(255, 55, 55, 55),
           color: Colors.black,
@@ -47,7 +47,6 @@ class _HomePageState extends State<HomePage> {
           },
           index: _currentPage,
           items: [
-            Icon(Icons.add, color: Colors.white),
             Icon(Icons.share, color: Colors.white),
             Icon(Icons.home, color: Colors.white),
             Icon(Icons.person, color: Colors.white)
