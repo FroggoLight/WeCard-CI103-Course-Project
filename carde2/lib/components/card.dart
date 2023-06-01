@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyCard extends StatelessWidget {
   String name;
@@ -35,10 +36,13 @@ class MyCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(name, style: TextStyle(fontSize: 20)),
-                        Text(number, style: TextStyle(fontSize: 12)),
-                        Text(email, style: TextStyle(fontSize: 12)),
-                        Text(bio, style: TextStyle(fontSize: 12))
+                        Text(name,
+                            style: GoogleFonts.bebasNeue(
+                                fontSize: 32, fontWeight: FontWeight.bold)),
+                        Text(number,
+                            style: GoogleFonts.bebasNeue(fontSize: 17)),
+                        Text(email, style: GoogleFonts.bebasNeue(fontSize: 17)),
+                        Text(bio, style: GoogleFonts.bebasNeue(fontSize: 17))
                       ],
                     )),
                   ),
