@@ -5,18 +5,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../components/button.dart';
 import '../components/textfield.dart';
-import '../Pages/pageB.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class scannerPage extends StatefulWidget {
-  const scannerPage({super.key});
+import 'pageA.dart';
+
+class ScannerPage extends StatefulWidget {
+  const ScannerPage({super.key});
 
   @override
-  State<scannerPage> createState() => _scannerPageState();
+  State<ScannerPage> createState() => _ScannerPageState();
 }
 
-class _scannerPageState extends State<scannerPage> {
+class _ScannerPageState extends State<ScannerPage> {
   final qrKey = GlobalKey(debugLabel: "QR");
   QRViewController? controller;
   Barcode? barcode;
@@ -92,7 +93,14 @@ class _scannerPageState extends State<scannerPage> {
           child: Scaffold(
               body: Stack(alignment: Alignment.center, children: <Widget>[
         buildQrView(context),
-        Positioned(bottom: 10, child: statusMessage()),
+        Positioned(
+            bottom: 75,
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
+                child: exitButton())),
       ])));
 
   Widget buildQrView(BuildContext context) => QRView(
@@ -101,15 +109,20 @@ class _scannerPageState extends State<scannerPage> {
       overlay: QrScannerOverlayShape(
           borderLength: 20,
           borderWidth: 10,
-          cutOutSize: MediaQuery.of(context).size.width * 0.8));
+          cutOutSize: MediaQuery.of(context).size.width * 0.8,
+          borderColor: Colors.green));
 
-  Widget statusMessage() => Container(
-      padding: const EdgeInsets.all(10),
+  Widget exitButton() => Container(
+      width: 75,
+      height: 75,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: Colors.white,
+        shape: BoxShape.circle,
+        color: Color.fromARGB(255, 55, 55, 55),
       ),
-      child: const Text("Scan a barcode"));
+      child: Icon(
+        Icons.arrow_back,
+        color: Colors.red,
+      ));
 
   void _onQRViewCreated(QRViewController controller) {
     setState(() => this.controller = controller);
